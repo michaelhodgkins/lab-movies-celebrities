@@ -8,7 +8,8 @@
     <p>{{name}}</p>
     <p>{{occupation}}</p>
     <p>{{catchPhrase}}</p>
+    {{/each}}
     <form action="/movies/{{_id}}/delete" method="POST">
     <button>Delete</button>
-    {{/each}}
+    <a href="/movies/{{_id}}/edit" method="POST">edit</a>
 </div>

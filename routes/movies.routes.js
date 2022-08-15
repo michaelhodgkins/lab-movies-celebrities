@@ -44,9 +44,35 @@ router.get('/', (req, res, next) => {
   router.post("/:id/delete", (req, res) => {
     const { id } = req.params;
   
-    Movie.findByIdAndRemove(id)
-      .then(() => res.redirect("/"))
+    Movie.findByIdAndDelete(id)
+      .then(() => res.redirect("/movies"))
       .catch((error) => console.log(`Error while deleting a book: ${error}`));
+  });
+
+  router.get("/:id/edit", (req, res) => {
+    const { id } = req.params;
+  
+    Movie.findById(id)
+    Celeb.find()
+      .then((movieToEdit) => {
+        res.render("movies/edit-movie", movieToEdit);
+      })
+      .catch((error) => `Error while getting a single movie for edit: ${error}`);
+  });
+  
+  router.post("/:id/edit", (req, res) => {
+    const { id } = req.params;
+    const { name, genre, plot, cast } = req.body;
+  
+    Movie.findByIdAndUpdate(
+      id,
+      { name, genre, plot, cast },
+      { new: true }
+    )
+      .then((updatedMovie) => res.redirect(`/${updatedMovie._id}`))
+      .catch((error) =>
+        console.log(`Error while updating a single movie: ${error}`)
+      );
   });
   
 module.exports = router;
