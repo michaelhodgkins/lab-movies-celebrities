@@ -15,7 +15,7 @@ router.post('/create', (req,res,next) => {
         .catch((err) =>`Your celebrity cannot be made ${err} `);
 })
 
-router.get('/celebrities', (req, res, next) => {
+router.get('/', (req, res, next) => {
     
     Celeb.find()
       .then((allTheCelebsFromDB) =>
