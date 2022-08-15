@@ -60,7 +60,7 @@ router.get('/', (req, res, next) => {
       .catch((error) => `Error while getting a single movie for edit: ${error}`);
   });
   
-  router.post("/:id/edit", (req, res) => {
+  router.post("/:id", (req, res) => {
     const { id } = req.params;
     const { name, genre, plot, cast } = req.body;
   
