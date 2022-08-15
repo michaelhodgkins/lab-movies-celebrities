@@ -15,4 +15,13 @@ router.post('/create', (req,res,next) => {
         .catch((err) =>`Your celebrity cannot be made ${err} `);
 })
 
+router.get('/celebrities', (req, res, next) => {
+    
+    Celeb.find()
+      .then((allTheCelebsFromDB) =>
+        res.render('celebrities/celebrities', {allTheCelebsFromDB})
+      )
+      .catch((err) => `Could not find all celebs: ${err}`);
+  });
+
 module.exports = router;
