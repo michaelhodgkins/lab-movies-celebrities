@@ -14,4 +14,13 @@ router.post('/create', (req,res,next) => {
         .then(() => res.redirect('/'))
         .catch((err) =>`Your movie cannot be made ${err} `);
 });
+
+router.get('/', (req, res, next) => {
+    
+    Movie.find()
+      .then((allTheMoviesFromDB) =>
+        res.render('movies/movies', {allTheMoviesFromDB})
+      )
+      .catch((err) => `Could not find all celebs: ${err}`);
+  });
 module.exports = router;
