@@ -11,10 +11,10 @@
 <label for="plot-input">Plot:</label>
 <input type="text" name="plot" id="plot-input"  />
 
-<label>Cast:</label>
-<select multiple> 
-    {{#each Celeb}}
-    <option value={{_id}}>{{name}}</option>
+<label for="cast">Cast:</label>
+<select multiple name='cast' id='cast'> 
+    {{#each DbCelebs}}
+    <option value="{{this._id}}">{{this.name}}</option>
     {{/each}}
 
 </select>
